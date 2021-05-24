@@ -1,5 +1,7 @@
 package com.plasticgeorge.tcpscaner;
 
+import java.util.TreeSet;
+
 public interface PortsScanner {
-    void scan();
+    TreeSet<HostPortsStatus> scan();
 }

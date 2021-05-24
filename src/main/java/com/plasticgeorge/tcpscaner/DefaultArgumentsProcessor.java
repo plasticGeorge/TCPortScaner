@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 public class DefaultArgumentsProcessor implements ArgumentsProcessor{
     @Override
-    public Object[] process(String[] args) {
+    public ScannerInput process(String[] args) {
         LinkedList<String> hosts = new LinkedList<>();
         LinkedList<Integer> ports = new LinkedList<>();
         int threads = 4;
@@ -24,8 +24,14 @@ public class DefaultArgumentsProcessor implements ArgumentsProcessor{
                     for (int j = Integer.parseInt(b[0]); j <= Integer.parseInt(b[b.length - 1]); j++)
                         for (int k = Integer.parseInt(c[0]); k <= Integer.parseInt(c[c.length - 1]); k++)
                             for (int l = Integer.parseInt(d[0]); l <= Integer.parseInt(d[d.length - 1]); l++)
-                                for (int m = Integer.parseInt(e[0]); m <= Integer.parseInt(e[e.length - 1]); m++)
+                                for (int m = Integer.parseInt(e[0]); m <= Integer.parseInt(e[e.length - 1]); m++) {
+                                    if(j < 0 || j > 255
+                                    || k < 0 || k > 255
+                                    || l < 0 || l > 255
+                                    || m < 0 || m > 255)
+                                        throw new IllegalArgumentException("Incorrect host(s) entered  - \'" + args[i] + "\'");
                                     hosts.push(j + "." + k + "." + l + "." + m);
+                                }
                 }
             } else if (args[i].equals("-p")) {
                 i++;
@@ -36,7 +42,10 @@ public class DefaultArgumentsProcessor implements ArgumentsProcessor{
                 }
             } else if (args[i].equals("-t")) {
                 i++;
-                threads = Integer.parseInt(args[i++]);
+                int temp = Integer.parseInt(args[i++]);
+                if(temp <= 0)
+                    throw new IllegalArgumentException("Incorrect number of threads entered  - \'" + temp + "\'");
+                threads = temp;
             } else
                 throw new IllegalArgumentException("Unknown parameter - \'" + args[i] + "\'");
         }
@@ -44,6 +53,6 @@ public class DefaultArgumentsProcessor implements ArgumentsProcessor{
         Collections.shuffle(hosts);
         Collections.shuffle(ports);
 
-        return new Object[]{hosts, ports, threads};
+        return new ScannerInput(hosts, ports, threads);
     }
 }
