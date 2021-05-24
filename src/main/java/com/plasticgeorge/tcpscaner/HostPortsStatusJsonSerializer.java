@@ -5,9 +5,15 @@ import org.json.simple.JSONObject;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collection;
 
-public class DefaultJsonSerializer implements JsonSerializer<HostPortsStatus>{
+public class HostPortsStatusJsonSerializer implements JsonSerializer<HostPortsStatus>{
+
+    @Override
+    public void serialize(Collection<HostPortsStatus> data, String pathToFile){
+        serialize(data, Paths.get(pathToFile));
+    }
 
     @Override
     public void serialize(Collection<HostPortsStatus> data, Path pathToFile) {
