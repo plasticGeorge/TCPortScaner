@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Set;
 import java.util.concurrent.*;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class ThreadPoolScanner implements PortsScanner {
     private final Logger logger = LogManager.getLogger(ThreadPoolScanner.class);
@@ -32,17 +31,13 @@ public class ThreadPoolScanner implements PortsScanner {
         LinkedList<Integer> ports = input.getPorts();
         int threadsNum = input.getThreadsNum();
         Future[] futures = new Future[threadsNum];
-        for(Future f : futures)
-            f = threadPool.submit(() -> {
+        for(int i = 0; i < futures.length; i++)
+            futures[i] = threadPool.submit(() -> {
                 try {
                     logger.info("New thread instance");
                     String host;
                     HashMap<Integer, String> portsStatus;
-                    while (true) {
-                        if((host = hosts.poll()) == null) {
-                            logger.info("Work complete");
-                            return;
-                        }
+                    while ((host = hosts.poll()) != null) {
                         portsStatus = new HashMap<>();
                         for (int port : ports) {
                             logger.info("Now scanning " + host + ":" + port);
@@ -55,12 +50,19 @@ public class ThreadPoolScanner implements PortsScanner {
                         }
                         output.add(new HostPortsStatus(host, portsStatus));
                     }
+                    logger.info("Work complete");
                 } catch (Exception ignore) {
                     logger.warn("Exception caught", ignore);
                 }
             });
         threadPool.shutdown();
-        while (!threadPool.isTerminated()){
+        try {
+            while (!threadPool.awaitTermination(3, TimeUnit.SECONDS)) {
+                logger.info("Awaiting completion of threads");
+            }
+        }
+        catch (InterruptedException e){
+            logger.warn("Exception caught", e);
         }
         logger.info("Scan completed");
         return output;

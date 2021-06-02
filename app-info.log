@@ -1,67 +1,13 @@
-[INFO ] 2021-06-02 19:39:00.310 [pool-2-thread-3] ThreadPoolScanner - Now scanning 8.8.8.14:443
-[INFO ] 2021-06-02 19:39:00.310 [pool-2-thread-4] ThreadPoolScanner - Now scanning 8.8.8.16:443
-[INFO ] 2021-06-02 19:39:00.310 [pool-2-thread-1] ThreadPoolScanner - Now scanning 8.8.8.12:443
-[INFO ] 2021-06-02 19:39:00.365 [pool-2-thread-2] ThreadPoolScanner - Now scanning 8.8.8.15:443
-[INFO ] 2021-06-02 19:39:00.840 [pool-2-thread-3] ThreadPoolScanner - Work complete
-[INFO ] 2021-06-02 19:39:00.840 [pool-2-thread-4] ThreadPoolScanner - Work complete
-[INFO ] 2021-06-02 19:39:00.840 [pool-2-thread-1] ThreadPoolScanner - Work complete
-[INFO ] 2021-06-02 19:39:00.880 [pool-2-thread-2] ThreadPoolScanner - Work complete
-[INFO ] 2021-06-02 19:39:00.880 [main] ThreadPoolScanner - Scan completed
-[INFO ] 2021-06-02 19:39:23.525 [main] ThreadPoolScanner - ThreadPoolScanner instance created
-[INFO ] 2021-06-02 19:39:23.533 [main] ThreadPoolScanner - Ports scan started
-[INFO ] 2021-06-02 19:39:23.533 [pool-2-thread-1] ThreadPoolScanner - New thread instance
-[INFO ] 2021-06-02 19:39:23.533 [pool-2-thread-2] ThreadPoolScanner - New thread instance
-[INFO ] 2021-06-02 19:39:23.541 [pool-2-thread-3] ThreadPoolScanner - New thread instance
-[INFO ] 2021-06-02 19:39:23.533 [pool-2-thread-4] ThreadPoolScanner - New thread instance
-[INFO ] 2021-06-02 19:39:23.555 [pool-2-thread-3] ThreadPoolScanner - Now scanning 8.8.8.10:53
-[INFO ] 2021-06-02 19:39:23.555 [pool-2-thread-4] ThreadPoolScanner - Now scanning 8.8.8.14:53
-[INFO ] 2021-06-02 19:39:23.555 [pool-2-thread-2] ThreadPoolScanner - Now scanning 8.8.8.12:53
-[INFO ] 2021-06-02 19:39:23.555 [pool-2-thread-1] ThreadPoolScanner - Now scanning 8.8.8.16:53
-[INFO ] 2021-06-02 19:39:24.065 [pool-2-thread-4] ThreadPoolScanner - Now scanning 8.8.8.14:443
-[INFO ] 2021-06-02 19:39:24.065 [pool-2-thread-1] ThreadPoolScanner - Now scanning 8.8.8.16:443
-[INFO ] 2021-06-02 19:39:24.065 [pool-2-thread-3] ThreadPoolScanner - Now scanning 8.8.8.10:443
-[INFO ] 2021-06-02 19:39:24.065 [pool-2-thread-2] ThreadPoolScanner - Now scanning 8.8.8.12:443
-[INFO ] 2021-06-02 19:39:24.570 [pool-2-thread-2] ThreadPoolScanner - Now scanning 8.8.8.8:53
-[INFO ] 2021-06-02 19:39:24.570 [pool-2-thread-4] ThreadPoolScanner - Now scanning 8.8.8.9:53
-[INFO ] 2021-06-02 19:39:24.570 [pool-2-thread-3] ThreadPoolScanner - Now scanning 8.8.8.11:53
-[INFO ] 2021-06-02 19:39:24.570 [pool-2-thread-1] ThreadPoolScanner - Now scanning 8.8.8.15:53
-[INFO ] 2021-06-02 19:39:24.605 [pool-2-thread-2] ThreadPoolScanner - Now scanning 8.8.8.8:443
-[INFO ] 2021-06-02 19:39:24.635 [pool-2-thread-2] ThreadPoolScanner - Now scanning 8.8.8.13:53
-[INFO ] 2021-06-02 19:39:25.085 [pool-2-thread-4] ThreadPoolScanner - Now scanning 8.8.8.9:443
-[INFO ] 2021-06-02 19:39:25.085 [pool-2-thread-3] ThreadPoolScanner - Now scanning 8.8.8.11:443
-[INFO ] 2021-06-02 19:39:25.085 [pool-2-thread-1] ThreadPoolScanner - Now scanning 8.8.8.15:443
-[INFO ] 2021-06-02 19:39:25.150 [pool-2-thread-2] ThreadPoolScanner - Now scanning 8.8.8.13:443
-[INFO ] 2021-06-02 19:39:25.600 [pool-2-thread-3] ThreadPoolScanner - Work complete
-[INFO ] 2021-06-02 19:39:25.600 [pool-2-thread-4] ThreadPoolScanner - Work complete
-[INFO ] 2021-06-02 19:39:25.600 [pool-2-thread-1] ThreadPoolScanner - Work complete
-[INFO ] 2021-06-02 19:39:25.650 [pool-2-thread-2] ThreadPoolScanner - Work complete
-[INFO ] 2021-06-02 19:39:25.650 [main] ThreadPoolScanner - Scan completed
-[INFO ] 2021-06-02 19:39:32.567 [main] ThreadPoolScanner - ThreadPoolScanner instance created
-[INFO ] 2021-06-02 19:39:32.570 [main] ThreadPoolScanner - Ports scan started
-[INFO ] 2021-06-02 19:39:32.581 [pool-2-thread-3] ThreadPoolScanner - New thread instance
-[INFO ] 2021-06-02 19:39:32.581 [pool-2-thread-1] ThreadPoolScanner - New thread instance
-[INFO ] 2021-06-02 19:39:32.581 [pool-2-thread-2] ThreadPoolScanner - New thread instance
-[INFO ] 2021-06-02 19:39:32.581 [pool-2-thread-4] ThreadPoolScanner - New thread instance
-[INFO ] 2021-06-02 19:39:32.606 [pool-2-thread-1] ThreadPoolScanner - Now scanning 8.8.8.11:443
-[INFO ] 2021-06-02 19:39:32.606 [pool-2-thread-3] ThreadPoolScanner - Now scanning 8.8.8.9:443
-[INFO ] 2021-06-02 19:39:32.606 [pool-2-thread-2] ThreadPoolScanner - Now scanning 8.8.8.10:443
-[INFO ] 2021-06-02 19:39:32.608 [pool-2-thread-4] ThreadPoolScanner - Now scanning 8.8.8.15:443
-[INFO ] 2021-06-02 19:39:33.126 [pool-2-thread-2] ThreadPoolScanner - Now scanning 8.8.8.10:53
-[INFO ] 2021-06-02 19:39:33.126 [pool-2-thread-4] ThreadPoolScanner - Now scanning 8.8.8.15:53
-[INFO ] 2021-06-02 19:39:33.126 [pool-2-thread-1] ThreadPoolScanner - Now scanning 8.8.8.11:53
-[INFO ] 2021-06-02 19:39:33.126 [pool-2-thread-3] ThreadPoolScanner - Now scanning 8.8.8.9:53
-[INFO ] 2021-06-02 19:39:33.635 [pool-2-thread-4] ThreadPoolScanner - Now scanning 8.8.8.14:443
-[INFO ] 2021-06-02 19:39:33.635 [pool-2-thread-3] ThreadPoolScanner - Now scanning 8.8.8.8:443
-[INFO ] 2021-06-02 19:39:33.635 [pool-2-thread-1] ThreadPoolScanner - Now scanning 8.8.8.13:443
-[INFO ] 2021-06-02 19:39:33.635 [pool-2-thread-2] ThreadPoolScanner - Now scanning 8.8.8.16:443
-[INFO ] 2021-06-02 19:39:33.675 [pool-2-thread-3] ThreadPoolScanner - Now scanning 8.8.8.8:53
-[INFO ] 2021-06-02 19:39:33.701 [pool-2-thread-3] ThreadPoolScanner - Now scanning 8.8.8.12:443
-[INFO ] 2021-06-02 19:39:34.140 [pool-2-thread-4] ThreadPoolScanner - Now scanning 8.8.8.14:53
-[INFO ] 2021-06-02 19:39:34.140 [pool-2-thread-2] ThreadPoolScanner - Now scanning 8.8.8.16:53
-[INFO ] 2021-06-02 19:39:34.140 [pool-2-thread-1] ThreadPoolScanner - Now scanning 8.8.8.13:53
-[INFO ] 2021-06-02 19:39:34.210 [pool-2-thread-3] ThreadPoolScanner - Now scanning 8.8.8.12:53
-[INFO ] 2021-06-02 19:39:34.640 [pool-2-thread-1] ThreadPoolScanner - Work complete
-[INFO ] 2021-06-02 19:39:34.640 [pool-2-thread-4] ThreadPoolScanner - Work complete
-[INFO ] 2021-06-02 19:39:34.640 [pool-2-thread-2] ThreadPoolScanner - Work complete
-[INFO ] 2021-06-02 19:39:34.715 [pool-2-thread-3] ThreadPoolScanner - Work complete
-[INFO ] 2021-06-02 19:39:34.715 [main] ThreadPoolScanner - Scan completed
+[INFO ] 2021-06-03 00:22:00.113 [pool-2-thread-1] ThreadPoolScanner - Now scanning 8.8.8.16:53
+[INFO ] 2021-06-03 00:22:00.113 [pool-2-thread-2] ThreadPoolScanner - Now scanning 8.8.8.9:53
+[INFO ] 2021-06-03 00:22:00.113 [pool-2-thread-4] ThreadPoolScanner - Now scanning 8.8.8.10:53
+[INFO ] 2021-06-03 00:22:00.478 [pool-2-thread-3] ThreadPoolScanner - Now scanning 8.8.8.15:53
+[INFO ] 2021-06-03 00:22:00.629 [pool-2-thread-2] ThreadPoolScanner - Now scanning 8.8.8.9:443
+[INFO ] 2021-06-03 00:22:00.629 [pool-2-thread-4] ThreadPoolScanner - Now scanning 8.8.8.10:443
+[INFO ] 2021-06-03 00:22:00.629 [pool-2-thread-1] ThreadPoolScanner - Now scanning 8.8.8.16:443
+[INFO ] 2021-06-03 00:22:00.999 [pool-2-thread-3] ThreadPoolScanner - Now scanning 8.8.8.15:443
+[INFO ] 2021-06-03 00:22:01.138 [pool-2-thread-2] ThreadPoolScanner - Work complete
+[INFO ] 2021-06-03 00:22:01.138 [pool-2-thread-4] ThreadPoolScanner - Work complete
+[INFO ] 2021-06-03 00:22:01.138 [pool-2-thread-1] ThreadPoolScanner - Work complete
+[INFO ] 2021-06-03 00:22:01.509 [pool-2-thread-3] ThreadPoolScanner - Work complete
+[INFO ] 2021-06-03 00:22:01.509 [main] ThreadPoolScanner - Scan completed
