@@ -5,15 +5,14 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Set;
 import java.util.TreeSet;
-
-import static org.junit.Assert.*;
 
 public class ThreadPoolScannerTest {
 
     @Test
     public void scan() {
-        TreeSet<HostPortsStatus> expected = new TreeSet<>();
+        Set<HostPortsStatus> expected = new TreeSet<>();
         HashMap<Integer, String> tempPortsStatus = new HashMap<>();
         tempPortsStatus.put(53, "open");
         tempPortsStatus.put(443, "open");
@@ -46,7 +45,7 @@ public class ThreadPoolScannerTest {
         ScannerInput input = new ScannerInput(hosts, ports, threadsNum);
 
         PortsScanner scanner = new ThreadPoolScanner(input);
-        TreeSet<HostPortsStatus> actual = scanner.scan();
+        Set<HostPortsStatus> actual = scanner.scan();
 
         Assert.assertEquals(expected, actual);
     }

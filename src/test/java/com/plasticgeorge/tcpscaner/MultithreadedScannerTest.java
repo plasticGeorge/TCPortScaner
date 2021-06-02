@@ -5,9 +5,8 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Set;
 import java.util.TreeSet;
-
-import static org.junit.Assert.*;
 
 public class MultithreadedScannerTest {
 
@@ -46,7 +45,7 @@ public class MultithreadedScannerTest {
         ScannerInput input = new ScannerInput(hosts, ports, threadsNum);
 
         PortsScanner scanner = new MultithreadedScanner(input);
-        TreeSet<HostPortsStatus> actual = scanner.scan();
+        Set<HostPortsStatus> actual = scanner.scan();
 
         Assert.assertEquals(expected, actual);
     }

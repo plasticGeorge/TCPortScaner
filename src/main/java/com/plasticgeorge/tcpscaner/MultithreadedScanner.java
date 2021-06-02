@@ -3,10 +3,11 @@ package com.plasticgeorge.tcpscaner;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.TreeSet;
 
 public class MultithreadedScanner implements PortsScanner, Runnable {
-    private ScannerInput input;
+    private final ScannerInput input;
     private final Object lock = new Object();
     private final TreeSet<HostPortsStatus> output;
 
@@ -15,8 +16,8 @@ public class MultithreadedScanner implements PortsScanner, Runnable {
         output = new TreeSet<>();
     }
 
-    public TreeSet<HostPortsStatus> scan(){
-        Thread[] threads = new Thread[input.threadsNum];
+    public Set<HostPortsStatus> scan(){
+        Thread[] threads = new Thread[input.getThreadsNum()];
         for(int i = 0; i < threads.length; i++) {
             threads[i] = new Thread(this);
             threads[i].start();
@@ -34,14 +35,14 @@ public class MultithreadedScanner implements PortsScanner, Runnable {
     public void run(){
         String host;
         synchronized (lock) {
-            if(!input.hosts.isEmpty())
-                host = input.hosts.pop();
+            if(!input.getHosts().isEmpty())
+                host = input.getHosts().pop();
             else
                 host = null;
         }
         while(host != null) {
             HashMap<Integer, String> portsStatus = new HashMap<>();
-            for (int port : input.ports) {
+            for (int port : input.getPorts()) {
                 boolean isOpen = false;
                 try (Socket socket = new Socket()) {
                     socket.connect(new InetSocketAddress(host, port), 500);
@@ -51,10 +52,10 @@ public class MultithreadedScanner implements PortsScanner, Runnable {
                 }
                 portsStatus.put(port, isOpen ? "open" : "close");
             }
-            output.add(new HostPortsStatus(host, portsStatus));
             synchronized (lock) {
-                if(!input.hosts.isEmpty())
-                    host = input.hosts.pop();
+                output.add(new HostPortsStatus(host, portsStatus));
+                if(!input.getHosts().isEmpty())
+                    host = input.getHosts().pop();
                 else
                     host = null;
             }

@@ -1,60 +1,68 @@
 package com.plasticgeorge.tcpscaner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.TreeSet;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.Set;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ThreadPoolScanner implements PortsScanner {
-    private ScannerInput input;
-    private ExecutorService threadPool;
-    private final TreeSet<HostPortsStatus> output;
-    private final ReentrantLock locker = new ReentrantLock();
+    private final Logger logger = LogManager.getLogger(ThreadPoolScanner.class);
+
+    private final ScannerInput input;
+    private final ExecutorService threadPool;
+    private final ConcurrentSkipListSet<HostPortsStatus> output;
 
     public ThreadPoolScanner(ScannerInput input){
+        logger.info("ThreadPoolScanner instance created");
         this.input = input;
-        threadPool = Executors.newFixedThreadPool(input.threadsNum);
-        output = new TreeSet<>();
+        threadPool = Executors.newFixedThreadPool(input.getThreadsNum());
+        output = new ConcurrentSkipListSet<>();
     }
 
     @Override
-    public TreeSet<HostPortsStatus> scan() {
-        LinkedList<String> hosts = input.hosts;
-        LinkedList<Integer> ports = input.ports;
-        int threadsNum = input.threadsNum;
+    public Set<HostPortsStatus> scan() {
+        logger.info("Ports scan started");
+        ConcurrentLinkedQueue<String> hosts = new ConcurrentLinkedQueue<>(input.getHosts());
+        LinkedList<Integer> ports = input.getPorts();
+        int threadsNum = input.getThreadsNum();
         Future[] futures = new Future[threadsNum];
-        for(int i = 0; i < threadsNum; i++) {
-            futures[i] = threadPool.submit(() -> {
-                locker.lock();
-                boolean proceed = !hosts.isEmpty();
-                locker.unlock();
-                while (proceed) {
-                    String host = hosts.pop();
-                    HashMap<Integer, String> portsStatus = new HashMap<>();
-                    for (int port : ports) {
-                        try (Socket socket = new Socket()) {
-                            socket.connect(new InetSocketAddress(host, port), 500);
-                            portsStatus.put(port, "open");
-                        } catch (Exception ignored) {
-                            portsStatus.put(port, "close");
+        for(Future f : futures)
+            f = threadPool.submit(() -> {
+                try {
+                    logger.info("New thread instance");
+                    String host;
+                    HashMap<Integer, String> portsStatus;
+                    while (true) {
+                        if((host = hosts.poll()) == null) {
+                            logger.info("Work complete");
+                            return;
                         }
+                        portsStatus = new HashMap<>();
+                        for (int port : ports) {
+                            logger.info("Now scanning " + host + ":" + port);
+                            try (Socket socket = new Socket()) {
+                                socket.connect(new InetSocketAddress(host, port), 500);
+                                portsStatus.put(port, "open");
+                            } catch (Exception ignored) {
+                                portsStatus.put(port, "close");
+                            }
+                        }
+                        output.add(new HostPortsStatus(host, portsStatus));
                     }
-                    output.add(new HostPortsStatus(host, portsStatus));
-                    locker.lock();
-                    proceed = !hosts.isEmpty();
-                    locker.unlock();
+                } catch (Exception ignore) {
+                    logger.warn("Exception caught", ignore);
                 }
             });
-        }
         threadPool.shutdown();
         while (!threadPool.isTerminated()){
-
         }
+        logger.info("Scan completed");
         return output;
     }
 }

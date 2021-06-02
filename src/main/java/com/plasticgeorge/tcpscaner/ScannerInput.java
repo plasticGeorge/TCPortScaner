@@ -4,14 +4,26 @@ import java.util.LinkedList;
 import java.util.Objects;
 
 public class ScannerInput {
-    LinkedList<String> hosts;
-    LinkedList<Integer> ports;
-    int threadsNum;
+    private final LinkedList<String> hosts;
+    private final LinkedList<Integer> ports;
+    private final int threadsNum;
 
     public ScannerInput(LinkedList<String> hosts, LinkedList<Integer> ports, int threadsNum){
         this.hosts = hosts;
         this.ports = ports;
         this.threadsNum = threadsNum;
+    }
+
+    public LinkedList<String> getHosts() {
+        return hosts;
+    }
+
+    public LinkedList<Integer> getPorts() {
+        return ports;
+    }
+
+    public int getThreadsNum() {
+        return threadsNum;
     }
 
     @Override
